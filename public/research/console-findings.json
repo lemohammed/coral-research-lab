@@ -1,0 +1,832 @@
+{
+  "findings": [
+    {
+      "id": "LAB-F001",
+      "title": "Typed tool composition and reusable tool programs",
+      "claim": {
+        "type": "recommendation",
+        "statement": "Provide discoverable typed tool APIs and a sandboxed code composer; retain successful compositions as versioned reusable skills."
+      },
+      "scope": "Emergent software research lab using 100+ sources; proposed integration, no local improvement trial",
+      "verdict": "WOW",
+      "priority": 1,
+      "status": "source_supported",
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "Two primary engineering sources describe tools exposed as code APIs and programmatic execution."
+        },
+        "lab_benefit": {
+          "level": "medium",
+          "basis": "The intended lab has many sources and repeated joins, but its token, latency, and accuracy bottlenecks have not been measured."
+        },
+        "calibrated_probability": null,
+        "calibration_ref": null,
+        "local_benefit": {
+          "level": "medium",
+          "basis": "The intended lab has many sources and repeated joins, but its token, latency, and accuracy bottlenecks have not been measured."
+        }
+      },
+      "evidence": [
+        {
+          "evidence_id": "LAB-F001-E01",
+          "source_id": "SRC-001",
+          "locator": "Code execution with MCP improves context efficiency; State persistence and skills",
+          "relation": "supports",
+          "basis": "primary_documentation",
+          "supports": "On-demand tool discovery, code-based control flow, data filtering, and saving reusable functions.",
+          "does_not_establish": "Savings or correct behavior on this lab; TypeScript annotations alone do not establish runtime correctness.",
+          "url": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+        },
+        {
+          "evidence_id": "LAB-F001-E02",
+          "source_id": "SRC-002",
+          "locator": "Converting MCP to TypeScript; Running code in a sandbox",
+          "relation": "supports",
+          "basis": "primary_documentation",
+          "supports": "MCP schemas mapped to a TypeScript API and calls executed through a sandbox.",
+          "does_not_establish": "Universal output schemas, source-permission correctness, or full determinism of external APIs.",
+          "url": "https://blog.cloudflare.com/code-mode/"
+        },
+        {
+          "evidence_id": "LAB-F001-E03",
+          "source_id": "SRC-014",
+          "locator": "Programmatic Tool Calling",
+          "relation": "supports",
+          "basis": "primary_documentation",
+          "supports": "Programmatic batching and result processing before returning selected output to the model.",
+          "does_not_establish": "Advertised vendor results transferring to this workload.",
+          "url": "https://www.anthropic.com/engineering/advanced-tool-use"
+        }
+      ],
+      "proof": {
+        "kind": "none",
+        "status": "not_run",
+        "evidence_ids": [],
+        "conditions": [],
+        "note": "Primary sources support the mechanism. Benefit in this lab has not been tested; external experimental reports are not local proof."
+      },
+      "reproduction": {
+        "status": "not_run",
+        "command": null,
+        "environment": null,
+        "artifact_paths": [],
+        "measurements": []
+      },
+      "trace": {
+        "research_event_ids": [
+          "FETCH-SRC-001",
+          "FETCH-SRC-002",
+          "FETCH-SRC-014",
+          "SYNTHESIS-LAB-F001"
+        ],
+        "execution_trace_id": null,
+        "execution_span_ids": [],
+        "attempt_ids": [],
+        "agent_version": null,
+        "policy_version": null,
+        "evaluator_version": null,
+        "source_ids": [
+          "SRC-001",
+          "SRC-002",
+          "SRC-014"
+        ],
+        "artifact_paths": [
+          "research/agent-lab-design/findings.json",
+          "research/agent-lab-design/finding.schema.json",
+          "research/agent-lab-design/research-trace.jsonl",
+          "research/sources/agent-lab-improvements-20261003/source-manifest.json"
+        ]
+      },
+      "limitations": [
+        "Generated compositions need runtime schema checks, versioned interfaces, side-effect metadata, and complete internal provenance.",
+        "Returning compact output to the model must not discard the evidence needed to verify it."
+      ],
+      "next_experiment": {
+        "hypothesis": "Code-based compositions improve verified task completion or reduce total cost for multi-source research.",
+        "comparison": "Compare direct tool calls with typed code composition on the same source snapshots and tasks.",
+        "success_criteria": [
+          "Maintain or improve answer correctness and source attribution.",
+          "Measure total tokens, wall time, API calls, and all failures.",
+          "Re-run the saved composition with the same inputs and record external-service variability."
+        ],
+        "budget": "Freeze equal total model tokens and compute for compared variants before execution; this report launches no experiment.",
+        "stop_condition": "Stop at the predeclared budget or a correctness/access regression; retain all completed outcomes."
+      }
+    },
+    {
+      "id": "LAB-F002",
+      "title": "Versioned self mutation with a population archive",
+      "claim": {
+        "type": "recommendation",
+        "statement": "Let peers create child versions of their harness and tools in isolated workspaces, retaining lineage and independently tested variants."
+      },
+      "scope": "Emergent software research lab using 100+ sources; proposed integration, no local improvement trial",
+      "verdict": "WOW",
+      "priority": 4,
+      "status": "source_supported",
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "DGM explicitly mutates agent code and evaluates variants; its report describes an archive of stepping stones."
+        },
+        "lab_benefit": {
+          "level": "medium",
+          "basis": "Research evidence supports harness mutation, but an improvement on this lab requires a representative acceptance suite and external evaluation."
+        },
+        "calibrated_probability": null,
+        "calibration_ref": null,
+        "local_benefit": {
+          "level": "medium",
+          "basis": "Research evidence supports harness mutation, but an improvement on this lab requires a representative acceptance suite and external evaluation."
+        }
+      },
+      "evidence": [
+        {
+          "evidence_id": "LAB-F002-E01",
+          "source_id": "SRC-003",
+          "locator": "Abstract: self-modification, empirical validation, archive",
+          "relation": "supports",
+          "basis": "author_reported_experiment",
+          "supports": "Self-modifying coding agents with a retained archive and reported benchmark improvements.",
+          "does_not_establish": "A formal guarantee or tested improvement in the proposed lab.",
+          "url": "https://arxiv.org/abs/2505.22954v3"
+        },
+        {
+          "evidence_id": "LAB-F002-E02",
+          "source_id": "SRC-010",
+          "locator": "How it works; open-ended exploration and lineage discussion",
+          "relation": "supports",
+          "basis": "author_reported_experiment",
+          "supports": "Branching from archived agent versions and retaining weaker ancestors that lead to later improvements.",
+          "does_not_establish": "Safe unbounded in-place modification or a complete production software factory.",
+          "url": "https://sakana.ai/dgm/"
+        }
+      ],
+      "proof": {
+        "kind": "none",
+        "status": "not_run",
+        "evidence_ids": [],
+        "conditions": [],
+        "note": "Primary sources support the mechanism. Benefit in this lab has not been tested; external experimental reports are not local proof."
+      },
+      "reproduction": {
+        "status": "not_run",
+        "command": null,
+        "environment": null,
+        "artifact_paths": [],
+        "measurements": []
+      },
+      "trace": {
+        "research_event_ids": [
+          "FETCH-SRC-003",
+          "FETCH-SRC-010",
+          "SYNTHESIS-LAB-F002"
+        ],
+        "execution_trace_id": null,
+        "execution_span_ids": [],
+        "attempt_ids": [],
+        "agent_version": null,
+        "policy_version": null,
+        "evaluator_version": null,
+        "source_ids": [
+          "SRC-003",
+          "SRC-010"
+        ],
+        "artifact_paths": [
+          "research/agent-lab-design/findings.json",
+          "research/agent-lab-design/finding.schema.json",
+          "research/agent-lab-design/research-trace.jsonl",
+          "research/sources/agent-lab-improvements-20261003/source-manifest.json"
+        ]
+      },
+      "limitations": [
+        "Mutation of evaluator results or resource enforcement would invalidate the comparison.",
+        "Run each variant under explicit capabilities, retain parent versions, and promote only against independent acceptance."
+      ],
+      "next_experiment": {
+        "hypothesis": "A mutation of the agent tool/debug loop improves held-out accepted outcomes at equal total budget.",
+        "comparison": "Compare the parent harness and a frozen selected child on development tasks and untouched holdout tasks.",
+        "success_criteria": [
+          "Keep correctness and access constraints satisfied.",
+          "Include unsuccessful mutation and evaluation costs.",
+          "Record exact parent, child, evaluator, model, and dataset versions."
+        ],
+        "budget": "Freeze equal total model tokens and compute for compared variants before execution; this report launches no experiment.",
+        "stop_condition": "Stop at the predeclared budget or a correctness/access regression; retain all completed outcomes."
+      }
+    },
+    {
+      "id": "LAB-F003",
+      "title": "Procedural memory from successes and failures",
+      "claim": {
+        "type": "recommendation",
+        "statement": "Curate scoped, revisable lessons from completed attempts and retrieve them with their evidence, failure conditions, and counterexamples."
+      },
+      "scope": "Emergent software research lab using 100+ sources; proposed integration, no local improvement trial",
+      "verdict": "WOW",
+      "priority": 3,
+      "status": "source_supported",
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "ACE describes evolving playbooks; ReasoningBank describes memory derived from successful and failed experience."
+        },
+        "lab_benefit": {
+          "level": "medium",
+          "basis": "Repeated tasks may benefit, but extra context and incorrect generalization can cost more than they save."
+        },
+        "calibrated_probability": null,
+        "calibration_ref": null,
+        "local_benefit": {
+          "level": "medium",
+          "basis": "Repeated tasks may benefit, but extra context and incorrect generalization can cost more than they save."
+        }
+      },
+      "evidence": [
+        {
+          "evidence_id": "LAB-F003-E01",
+          "source_id": "SRC-005",
+          "locator": "Abstract: generation, reflection, curation and incremental context updates",
+          "relation": "supports",
+          "basis": "author_reported_experiment",
+          "supports": "Structured context adaptation and reported agent benchmark gains.",
+          "does_not_establish": "Guaranteed improvement on a new repository or correctness of all accumulated lessons.",
+          "url": "https://arxiv.org/abs/2510.04618v3"
+        },
+        {
+          "evidence_id": "LAB-F003-E02",
+          "source_id": "SRC-006",
+          "locator": "Abstract: memory from successful and failed experiences",
+          "relation": "supports",
+          "basis": "author_reported_experiment",
+          "supports": "Distillation and reuse of experience-based strategies.",
+          "does_not_establish": "Trusted ground truth from self-judgment or universal value from more memory.",
+          "url": "https://arxiv.org/abs/2509.25140"
+        }
+      ],
+      "proof": {
+        "kind": "none",
+        "status": "not_run",
+        "evidence_ids": [],
+        "conditions": [],
+        "note": "Primary sources support the mechanism. Benefit in this lab has not been tested; external experimental reports are not local proof."
+      },
+      "reproduction": {
+        "status": "not_run",
+        "command": null,
+        "environment": null,
+        "artifact_paths": [],
+        "measurements": []
+      },
+      "trace": {
+        "research_event_ids": [
+          "FETCH-SRC-005",
+          "FETCH-SRC-006",
+          "SYNTHESIS-LAB-F003"
+        ],
+        "execution_trace_id": null,
+        "execution_span_ids": [],
+        "attempt_ids": [],
+        "agent_version": null,
+        "policy_version": null,
+        "evaluator_version": null,
+        "source_ids": [
+          "SRC-005",
+          "SRC-006"
+        ],
+        "artifact_paths": [
+          "research/agent-lab-design/findings.json",
+          "research/agent-lab-design/finding.schema.json",
+          "research/agent-lab-design/research-trace.jsonl",
+          "research/sources/agent-lab-improvements-20261003/source-manifest.json"
+        ]
+      },
+      "limitations": [
+        "Separate source facts, proposed lessons, and independently reproduced procedures.",
+        "Attach applicability conditions, source versions, negative examples, and invalidation events."
+      ],
+      "next_experiment": {
+        "hypothesis": "Scoped procedural memory reduces repeated failures while preserving performance on unfamiliar tasks.",
+        "comparison": "Compare no procedural memory, raw past notes, and evidence-linked procedures under matched total context budgets.",
+        "success_criteria": [
+          "Measure accepted outcomes and total token cost.",
+          "Count repeated mistakes and irrelevant memory retrieval.",
+          "Evaluate on later tasks and changed repository/source versions."
+        ],
+        "budget": "Freeze equal total model tokens and compute for compared variants before execution; this report launches no experiment.",
+        "stop_condition": "Stop at the predeclared budget or a correctness/access regression; retain all completed outcomes."
+      }
+    },
+    {
+      "id": "LAB-F004",
+      "title": "Trace informed prompt and tool interface optimization",
+      "claim": {
+        "type": "recommendation",
+        "statement": "Offer GEPA-style reflective optimization for bounded text parameters such as instructions and tool descriptions after traces reveal a concrete weakness."
+      },
+      "scope": "Emergent software research lab using 100+ sources; proposed integration, no local improvement trial",
+      "verdict": "MEH",
+      "priority": 5,
+      "status": "source_supported",
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "GEPA reflects on execution feedback and evolves candidates; its current upstream interface generalizes to evaluated text artifacts."
+        },
+        "lab_benefit": {
+          "level": "medium",
+          "basis": "Potentially useful targeted tuning, but secondary to reliable tools, memory, and evidence infrastructure."
+        },
+        "calibrated_probability": null,
+        "calibration_ref": null,
+        "local_benefit": {
+          "level": "medium",
+          "basis": "Potentially useful targeted tuning, but secondary to reliable tools, memory, and evidence infrastructure."
+        }
+      },
+      "evidence": [
+        {
+          "evidence_id": "LAB-F004-E01",
+          "source_id": "SRC-004",
+          "locator": "Abstract: trajectory reflection and Pareto prompt evolution",
+          "relation": "supports",
+          "basis": "author_reported_experiment",
+          "supports": "Reflective prompt optimization evaluated against stated baselines.",
+          "does_not_establish": "An automatic improvement in organization or tool implementation.",
+          "url": "https://arxiv.org/abs/2507.19457v2"
+        },
+        {
+          "evidence_id": "LAB-F004-E02",
+          "source_id": "SRC-012",
+          "locator": "How It Works; optimize_anything",
+          "relation": "supports",
+          "basis": "source_inspection",
+          "supports": "An upstream evaluator-driven interface for optimizing text artifacts, beyond the original prompt-focused paper.",
+          "does_not_establish": "A verified installed release, compatibility with CORAL, or measured tool-schema gains.",
+          "url": "https://raw.githubusercontent.com/gepa-ai/gepa/fb1ed589fd83372caef499cffc2c73173d3b096b/README.md"
+        }
+      ],
+      "proof": {
+        "kind": "none",
+        "status": "not_run",
+        "evidence_ids": [],
+        "conditions": [],
+        "note": "Primary sources support the mechanism. Benefit in this lab has not been tested; external experimental reports are not local proof."
+      },
+      "reproduction": {
+        "status": "not_run",
+        "command": null,
+        "environment": null,
+        "artifact_paths": [],
+        "measurements": []
+      },
+      "trace": {
+        "research_event_ids": [
+          "FETCH-SRC-004",
+          "FETCH-SRC-012",
+          "SYNTHESIS-LAB-F004"
+        ],
+        "execution_trace_id": null,
+        "execution_span_ids": [],
+        "attempt_ids": [],
+        "agent_version": null,
+        "policy_version": null,
+        "evaluator_version": null,
+        "source_ids": [
+          "SRC-004",
+          "SRC-012"
+        ],
+        "artifact_paths": [
+          "research/agent-lab-design/findings.json",
+          "research/agent-lab-design/finding.schema.json",
+          "research/agent-lab-design/research-trace.jsonl",
+          "research/sources/agent-lab-improvements-20261003/source-manifest.json"
+        ]
+      },
+      "limitations": [
+        "Tool descriptions cannot fix an incorrect tool implementation.",
+        "Optimizing on the same tasks used for final claims risks selection overfitting."
+      ],
+      "next_experiment": {
+        "hypothesis": "Trace-guided edits to one problematic tool interface reduce malformed or misrouted calls.",
+        "comparison": "Freeze the runtime and compare original versus revised descriptions on held-out tool-calling tasks.",
+        "success_criteria": [
+          "Count correct tool/argument selections and independently verified outcomes.",
+          "Keep tool capabilities and implementation equivalent.",
+          "Include reflection and search costs in the budget."
+        ],
+        "budget": "Freeze equal total model tokens and compute for compared variants before execution; this report launches no experiment.",
+        "stop_condition": "Stop at the predeclared budget or a correctness/access regression; retain all completed outcomes."
+      }
+    },
+    {
+      "id": "LAB-F005",
+      "title": "Independent reproduction and adversarial evaluation",
+      "claim": {
+        "type": "recommendation",
+        "statement": "Provide a reproduction service and optional peer challenge projects that test claims against protected acceptance cases and actual environment outcomes."
+      },
+      "scope": "Emergent software research lab using 100+ sources; proposed integration, no local improvement trial",
+      "verdict": "WOW",
+      "priority": 2,
+      "status": "source_supported",
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "Primary evaluation guidance separates transcripts from outcomes and combines graders suited to the claim."
+        },
+        "lab_benefit": {
+          "level": "high",
+          "basis": "Independent reproducibility directly addresses the requested proof and trace output, though it adds execution cost."
+        },
+        "calibrated_probability": null,
+        "calibration_ref": null,
+        "local_benefit": {
+          "level": "high",
+          "basis": "Independent reproducibility directly addresses the requested proof and trace output, though it adds execution cost."
+        }
+      },
+      "evidence": [
+        {
+          "evidence_id": "LAB-F005-E01",
+          "source_id": "SRC-007",
+          "locator": "The structure of an evaluation; Types of graders for agents",
+          "relation": "supports",
+          "basis": "primary_documentation",
+          "supports": "Outcome verification and explicit distinctions among code-based, model-based, and human graders.",
+          "does_not_establish": "Truth established by a report, a judge score, or agent agreement.",
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+        }
+      ],
+      "proof": {
+        "kind": "none",
+        "status": "not_run",
+        "evidence_ids": [],
+        "conditions": [],
+        "note": "Primary sources support the mechanism. Benefit in this lab has not been tested; external experimental reports are not local proof."
+      },
+      "reproduction": {
+        "status": "not_run",
+        "command": null,
+        "environment": null,
+        "artifact_paths": [],
+        "measurements": []
+      },
+      "trace": {
+        "research_event_ids": [
+          "FETCH-SRC-007",
+          "SYNTHESIS-LAB-F005"
+        ],
+        "execution_trace_id": null,
+        "execution_span_ids": [],
+        "attempt_ids": [],
+        "agent_version": null,
+        "policy_version": null,
+        "evaluator_version": null,
+        "source_ids": [
+          "SRC-007"
+        ],
+        "artifact_paths": [
+          "research/agent-lab-design/findings.json",
+          "research/agent-lab-design/finding.schema.json",
+          "research/agent-lab-design/research-trace.jsonl",
+          "research/sources/agent-lab-improvements-20261003/source-manifest.json"
+        ]
+      },
+      "limitations": [
+        "Passing a reproduction demonstrates the stated conditions, not every deployment context.",
+        "Agents may propose new tests; scoring and protected acceptance must remain independent of the candidate."
+      ],
+      "next_experiment": {
+        "hypothesis": "Independent reproductions expose false positive bug fixes and performance claims.",
+        "comparison": "Run baseline and candidate in separately pinned environments with known positive and negative cases.",
+        "success_criteria": [
+          "Require a failure on baseline and pass on candidate for a claimed fix.",
+          "Record all repetitions and environmental noise for performance claims.",
+          "Use protected acceptance cases and report failed or inconclusive reproductions."
+        ],
+        "budget": "Freeze equal total model tokens and compute for compared variants before execution; this report launches no experiment.",
+        "stop_condition": "Stop at the predeclared budget or a correctness/access regression; retain all completed outcomes."
+      }
+    },
+    {
+      "id": "LAB-F006",
+      "title": "Diversity and stepping stone preservation",
+      "claim": {
+        "type": "recommendation",
+        "statement": "Retain useful alternative agent and tool variants across capability, cost, latency, and robustness niches instead of selecting a single global winner."
+      },
+      "scope": "Emergent software research lab using 100+ sources; proposed integration, no local improvement trial",
+      "verdict": "WOW",
+      "priority": 6,
+      "status": "source_supported",
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "DGM retains stepping stones; GEPA uses Pareto-aware candidate selection."
+        },
+        "lab_benefit": {
+          "level": "medium",
+          "basis": "Diversity may preserve useful approaches, but storage, coordination, and evaluation overhead need measurement."
+        },
+        "calibrated_probability": null,
+        "calibration_ref": null,
+        "local_benefit": {
+          "level": "medium",
+          "basis": "Diversity may preserve useful approaches, but storage, coordination, and evaluation overhead need measurement."
+        }
+      },
+      "evidence": [
+        {
+          "evidence_id": "LAB-F006-E01",
+          "source_id": "SRC-010",
+          "locator": "Lineage discussion: less-performant ancestors and later improvements",
+          "relation": "supports",
+          "basis": "author_reported_experiment",
+          "supports": "Discarding every lower-scoring ancestor can remove productive evolutionary paths.",
+          "does_not_establish": "The optimal archive size, novelty metric, or lab-wide allocation policy.",
+          "url": "https://sakana.ai/dgm/"
+        },
+        {
+          "evidence_id": "LAB-F006-E02",
+          "source_id": "SRC-004",
+          "locator": "Abstract: complementary lessons from the Pareto frontier",
+          "relation": "supports",
+          "basis": "author_reported_experiment",
+          "supports": "Selection among candidates with complementary strengths.",
+          "does_not_establish": "Automatic emergent teams or an optimal multi-objective software factory.",
+          "url": "https://arxiv.org/abs/2507.19457v2"
+        }
+      ],
+      "proof": {
+        "kind": "none",
+        "status": "not_run",
+        "evidence_ids": [],
+        "conditions": [],
+        "note": "Primary sources support the mechanism. Benefit in this lab has not been tested; external experimental reports are not local proof."
+      },
+      "reproduction": {
+        "status": "not_run",
+        "command": null,
+        "environment": null,
+        "artifact_paths": [],
+        "measurements": []
+      },
+      "trace": {
+        "research_event_ids": [
+          "FETCH-SRC-004",
+          "FETCH-SRC-010",
+          "SYNTHESIS-LAB-F006"
+        ],
+        "execution_trace_id": null,
+        "execution_span_ids": [],
+        "attempt_ids": [],
+        "agent_version": null,
+        "policy_version": null,
+        "evaluator_version": null,
+        "source_ids": [
+          "SRC-004",
+          "SRC-010"
+        ],
+        "artifact_paths": [
+          "research/agent-lab-design/findings.json",
+          "research/agent-lab-design/finding.schema.json",
+          "research/agent-lab-design/research-trace.jsonl",
+          "research/sources/agent-lab-improvements-20261003/source-manifest.json"
+        ]
+      },
+      "limitations": [
+        "Preserve selected alternatives within a bounded archive; do not retain unlimited untested variants.",
+        "Define observable niches by task behavior and measured costs, rather than personality labels."
+      ],
+      "next_experiment": {
+        "hypothesis": "A bounded diverse archive discovers useful variants that best-only selection misses.",
+        "comparison": "Compare best-only retention with niche/Pareto retention at equal total mutation and evaluation budgets.",
+        "success_criteria": [
+          "Measure held-out accepted outcomes and coverage of difficult task classes.",
+          "Account for archive retrieval and evaluation costs.",
+          "Retain lineage showing which ancestors contributed to successful variants."
+        ],
+        "budget": "Freeze equal total model tokens and compute for compared variants before execution; this report launches no experiment.",
+        "stop_condition": "Stop at the predeclared budget or a correctness/access regression; retain all completed outcomes."
+      }
+    },
+    {
+      "id": "LAB-F007",
+      "title": "Finding evidence graph and causal research traces",
+      "claim": {
+        "type": "recommendation",
+        "statement": "Represent each claim as a structured finding linked to exact source snapshots, research events, experiment versions, reproductions, contradictions, and observed outcomes."
+      },
+      "scope": "Emergent software research lab using 100+ sources; proposed integration, no local improvement trial",
+      "verdict": "WOW",
+      "priority": 0,
+      "status": "source_supported",
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "W3C PROV supplies provenance relationships; OpenTelemetry supplies execution trace, span, and link concepts."
+        },
+        "lab_benefit": {
+          "level": "high",
+          "basis": "This directly satisfies the user requirement for structured confidence, proof, and research traceability; it does not itself improve solver accuracy."
+        },
+        "calibrated_probability": null,
+        "calibration_ref": null,
+        "local_benefit": {
+          "level": "high",
+          "basis": "This directly satisfies the user requirement for structured confidence, proof, and research traceability; it does not itself improve solver accuracy."
+        }
+      },
+      "evidence": [
+        {
+          "evidence_id": "LAB-F007-E01",
+          "source_id": "SRC-008",
+          "locator": "Traces: spans, context propagation, and links",
+          "relation": "supports",
+          "basis": "primary_documentation",
+          "supports": "Tracing operations and relating execution across components.",
+          "does_not_establish": "Research correctness or a complete record if events are sampled or omitted.",
+          "url": "https://opentelemetry.io/docs/concepts/signals/traces/index.md"
+        },
+        {
+          "evidence_id": "LAB-F007-E02",
+          "source_id": "SRC-009",
+          "locator": "Starting Point Terms: Entity, Activity, Agent, wasDerivedFrom, used, wasInformedBy",
+          "relation": "supports",
+          "basis": "primary_documentation",
+          "supports": "A vocabulary for relating artifacts, activities, and contributors.",
+          "does_not_establish": "A citation graph constituting a formal proof or independently verified facts.",
+          "url": "https://www.w3.org/TR/prov-o/"
+        },
+        {
+          "evidence_id": "LAB-F007-E03",
+          "source_id": "SRC-013",
+          "locator": "OpenTelemetry GenAI Semantic Conventions README",
+          "relation": "supports",
+          "basis": "source_inspection",
+          "supports": "Current repository for GenAI, MCP, span, metric, and event conventions.",
+          "does_not_establish": "Every convention being stable or all tools emitting it automatically.",
+          "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/e07f4ebacb08f56db8c4c882d117720333fbca04/README.md"
+        }
+      ],
+      "proof": {
+        "kind": "none",
+        "status": "not_run",
+        "evidence_ids": [],
+        "conditions": [],
+        "note": "Primary sources support the mechanism. Benefit in this lab has not been tested; external experimental reports are not local proof."
+      },
+      "reproduction": {
+        "status": "not_run",
+        "command": null,
+        "environment": null,
+        "artifact_paths": [],
+        "measurements": []
+      },
+      "trace": {
+        "research_event_ids": [
+          "FETCH-SRC-008",
+          "FETCH-SRC-009",
+          "FETCH-SRC-013",
+          "SYNTHESIS-LAB-F007"
+        ],
+        "execution_trace_id": null,
+        "execution_span_ids": [],
+        "attempt_ids": [],
+        "agent_version": null,
+        "policy_version": null,
+        "evaluator_version": null,
+        "source_ids": [
+          "SRC-008",
+          "SRC-009",
+          "SRC-013"
+        ],
+        "artifact_paths": [
+          "research/agent-lab-design/findings.json",
+          "research/agent-lab-design/finding.schema.json",
+          "research/agent-lab-design/research-trace.jsonl",
+          "research/sources/agent-lab-improvements-20261003/source-manifest.json"
+        ]
+      },
+      "limitations": [
+        "A source hash establishes snapshot identity, not truth.",
+        "Record cross-agent artifact/message influences as links; Git ancestry alone is incomplete.",
+        "Keep unobserved values null and distinguish research audit events from actual lab execution traces."
+      ],
+      "next_experiment": {
+        "hypothesis": "A reviewer can reconstruct every recommendation and tested result from its stored evidence and trace links.",
+        "comparison": "Follow findings back to retained sources and, when trials exist, to raw attempts, commands, and receipts.",
+        "success_criteria": [
+          "No dangling evidence references or changed snapshot hashes.",
+          "Unknown confidence probabilities and unrun measurements remain null.",
+          "Contradicting evidence, scope conditions, and failed trials remain visible."
+        ],
+        "budget": "Freeze equal total model tokens and compute for compared variants before execution; this report launches no experiment.",
+        "stop_condition": "Stop at the predeclared budget or a correctness/access regression; retain all completed outcomes."
+      }
+    },
+    {
+      "id": "HL-F01",
+      "title": "Learned harness revision transfers to unseen task families",
+      "claim": {
+        "statement": "The authors report learned executable-harness revisions transferring to 21 unseen Reasoning Gym families: mean score 0.32 for base-proposer revisions and 0.62 after training; trained 4B proposer revisions average 0.62 versus the 35B teacher revisions at 0.56 under the same protocol."
+      },
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "Primary method and reported results inspected; no independent replication or local experiment."
+        },
+        "local_benefit": {
+          "level": "unknown",
+          "basis": "No local experiment or calibrated probability."
+        }
+      },
+      "proof": {
+        "status": "not_run",
+        "note": "Author-reported component evidence only; no local reproduction."
+      },
+      "evidence": [
+        {
+          "source_id": "HL-R01",
+          "locator": "Sections 4 and 5.2; Figure 3; Appendix B.1",
+          "url": "https://arxiv.org/html/2609.35738v1"
+        }
+      ],
+      "limitations": [
+        "Transfer evidence covers the paper task families, not arbitrary software-factory objectives.",
+        "Official implementation and checkpoint availability unresolved."
+      ]
+    },
+    {
+      "id": "HL-F02",
+      "title": "Composed tools need functional contribution checks",
+      "claim": {
+        "statement": "Structural helper integration does not establish functional benefit; the paper reports failures in parsing, tool communication, and answer extraction around otherwise correct helper algorithms."
+      },
+      "confidence": {
+        "mechanism": {
+          "level": "high",
+          "basis": "The primary paper explicitly distinguishes structural and functional composition; local acceptance benefit remains a hypothesis."
+        },
+        "local_benefit": {
+          "level": "unknown",
+          "basis": "No local experiment or calibrated probability."
+        }
+      },
+      "proof": {
+        "status": "not_run",
+        "note": "Author-reported component evidence only; no local reproduction."
+      },
+      "evidence": [
+        {
+          "source_id": "HL-R01",
+          "locator": "Section 6.2; Figure 6c; Appendix C.4; Table 21",
+          "url": "https://arxiv.org/html/2609.35738v1"
+        }
+      ],
+      "limitations": [
+        "A proposed causal contribution check is our lab design, not a verified reproduction of the paper."
+      ]
+    },
+    {
+      "id": "HL-F03",
+      "title": "A bounded learned revision service for the lab",
+      "claim": {
+        "statement": "A learned harness revision operator can be exposed as an optional C13/L4 service between development failure reports and independently evaluated child capabilities, alongside CORAL-style peers, Dream-RSI exploration research, and SIFT candidate prioritization."
+      },
+      "confidence": {
+        "mechanism": {
+          "level": "medium",
+          "basis": "The method input and output match the existing versioned harness-variant interface; component compatibility does not establish combined empirical benefit."
+        },
+        "local_benefit": {
+          "level": "unknown",
+          "basis": "No local experiment or calibrated probability."
+        }
+      },
+      "proof": {
+        "status": "not_run",
+        "note": "Author-reported component evidence only; no local reproduction."
+      },
+      "evidence": [
+        {
+          "source_id": "HL-R01",
+          "locator": "Section 4; Appendix E",
+          "url": "https://arxiv.org/html/2609.35738v1"
+        },
+        {
+          "source_id": "HL-R01",
+          "locator": "Sections 5.3, 5.4, and 6.2; Appendix F",
+          "url": "https://arxiv.org/html/2609.35738v1"
+        }
+      ],
+      "limitations": [
+        "Requires an available learned revision policy for a faithful learned-operator comparison.",
+        "Proposal-count equality does not establish total-cost equality.",
+        "No evidence of unrestricted recursive self-training or source-induced objective discovery from this method alone."
+      ]
+    }
+  ]
+}

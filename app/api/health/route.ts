@@ -1,0 +1,1 @@
+export async function GET() { return Response.json({ status: "ok", app: "CORAL Research Lab", capabilities: ["live_scholarly_search", "paper_import", "contract_composition", "architecture_export", "private_workspace"] }); }
