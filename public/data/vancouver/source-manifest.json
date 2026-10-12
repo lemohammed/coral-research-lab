@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "source": "OpenStreetMap",
+      "snapshot": "stanley-park.osm",
+      "url": "https://api.openstreetmap.org/api/0.6/map",
+      "sha256": "1cbd6df0022a63a4f4f5ebd7cc0f8d5376b010dfcbe777eb8dccd85531a2f28a"
+    },
+    {
+      "source": "OpenStreetMap",
+      "snapshot": "west-end.osm",
+      "url": "https://api.openstreetmap.org/api/0.6/map",
+      "sha256": "045c8bd25180e5a9813f15510d5bb3855c33b35fce201696eaf2ab448ead1815"
+    },
+    {
+      "source": "City of Vancouver building footprints 2009",
+      "url": "https://opendata.vancouver.ca/explore/dataset/building-footprints-2009/"
+    }
+  ],
+  "license": "ODbL-1.0 for OSM-derived geometry; Open Government Licence - Vancouver for City attributes",
+  "limitations": [
+    "City height attributes describe 2009 conditions.",
+    "Unspecified heights, terrain and canopy are stylized estimates.",
+    "The cropped land polygon closes beyond the view boundary; adjacent coast segments within 28m may be joined.",
+    "Vessels are a simulation, not live AIS or agent telemetry."
+  ],
+  "counts": {
+    "buildings": 969,
+    "coastline_vertices": 1061,
+    "forest_points": 15934,
+    "road_segments": 95
+  },
+  "geometry_sha256": "ced6e5aca6c405fbcb2050c85e652ec53995d73aaf312a60efed75bbd421575a"
+}

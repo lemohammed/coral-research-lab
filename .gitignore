@@ -48,3 +48,5 @@ next-env.d.ts
 /runs/
 
 *.tsbuildinfo
+
+/data/vancouver-scene/
